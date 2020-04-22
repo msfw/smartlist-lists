@@ -35,12 +35,13 @@ module.exports = {
     },
 
     async update(req, res) {
-        const { items, name } = req.body;
+        const { items, name, type } = req.body;
 
         try {
             const list = await List.findByIdAndUpdate(req.params.listId, {
                 name,
-                items
+                items,
+                type
             }, { new: true });
 
             return res.send({ list })
