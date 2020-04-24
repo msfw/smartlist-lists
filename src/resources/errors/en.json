@@ -1,0 +1,18 @@
+{
+    "post":{
+        "status": 400,
+        "description": "Error while creating list."
+    },
+    "put":{
+        "status": 400,
+        "description": "Error while putting list."
+    },
+    "get":{
+        "status": 400,
+        "description": "Error while getting list."
+    },
+    "del":{
+        "status": 400,
+        "description": "Error while deleting list."
+    }
+}

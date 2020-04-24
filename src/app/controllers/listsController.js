@@ -3,23 +3,28 @@ const { post, put, get, del } = require('../../resources/listErrors')
 
 module.exports = {
     async getAll(req, res) {
+        const getErrors = res.__('get')
         try {        
+
             const lists = await List.find({ 'user.email': req.query.userEmail });
             return res.send({ lists })
+
         } catch (error) {
-            return res.status(get.status).send(get.description)
+            return res.status(getErrors.status).send(getErrors.description)
         }
     },
     async getById(req, res) {
+        const getErrors = res.__('get')
         try {
             const list = await List.findById(req.params.listId);
             return res.send({ list })
         } catch (error) {
-            return res.status(get.status).send(get.description)
+            return res.status(getErrors.status).send(getErrors.description)
         }
     },
 
     async create(req, res) {
+        const postErrors = res.__('post')
         try {
 
             let lists = undefined
@@ -30,11 +35,12 @@ module.exports = {
     
             return res.send({ lists })
         } catch (error) {
-            return res.status(post.status).send(`${post.description} | Error: ${error}.`)
+            return res.status(postErrors.status).send(`${postErrors.description} | Error: ${error}.`)
         } 
     },
 
     async update(req, res) {
+        const putErrors = res.__('put')
         const { items, name, type } = req.body;
 
         try {
@@ -47,16 +53,17 @@ module.exports = {
             return res.send({ list })
 
         } catch (error) {
-            return res.status(put.status).send(put.description)
+            return res.status(putErrors.status).send(putErrors.description)
         }
     },
 
     async delete(req, res) {
+        const delErrors = res.__('del')
         try {
             const list = await List.findByIdAndRemove(req.params.listId);
             return res.send({ list })
         } catch (error) {
-            return res.status(del.status).send(del.description)
+            return res.status(delErrors.status).send(delErrors.description)
         }
     }
 }

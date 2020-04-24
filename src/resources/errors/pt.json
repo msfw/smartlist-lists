@@ -1,0 +1,18 @@
+{
+    "post":{
+        "status": 400,
+        "description": "Erro ao criar nova lista."
+    },
+    "put":{
+        "status": 400,
+        "description": "Erro ao atualizar lista."
+    },
+    "get":{
+        "status": 400,
+        "description": "Erro ao buscar lista."
+    },
+    "del":{
+        "status": 400,
+        "description": "Erro ao deletar lista."
+    }
+}
