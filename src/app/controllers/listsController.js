@@ -3,13 +3,18 @@ const { post, put, get, del } = require('../../resources/listErrors')
 
 module.exports = {
     async getAll(req, res) {
+        console.log('Entrou no getAll')
         const getErrors = res.__('get')
+        console.log('carregou idioma')
         try {        
-
+            
+            console.log('Vai chama banco')
             const lists = await List.find({ 'user.email': req.query.userEmail });
+            console.log('Chamou')
             return res.send({ lists })
 
         } catch (error) {
+            console.log('Deu pau', error)
             return res.status(getErrors.status).send(getErrors.description)
         }
     },
