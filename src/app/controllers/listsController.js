@@ -1,19 +1,14 @@
 const List = require('../models/list')
 
 module.exports = {
-    async getAll(req, res) {
-        console.log('Entrou no getAll')
-        const getErrors = res.__('get')
-        console.log('carregou idioma')
+    async getAll(req, res) {        
+        const getErrors = res.__('get')        
         try {        
             
-            console.log('Vai chama banco')
-            const lists = await List.find({ 'user.email': req.query.userEmail });
-            console.log('Chamou')
+            const lists = await List.find({ 'user.email': req.query.userEmail });            
             return res.send({ lists })
 
-        } catch (error) {
-            console.log('Deu pau', error)
+        } catch (error) {            
             return res.status(getErrors.status).send(getErrors.description)
         }
     },
