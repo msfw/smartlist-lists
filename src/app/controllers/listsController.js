@@ -1,5 +1,4 @@
 const List = require('../models/list')
-const { post, put, get, del } = require('../../resources/listErrors')
 
 module.exports = {
     async getAll(req, res) {
